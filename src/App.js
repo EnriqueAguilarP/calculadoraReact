@@ -1,17 +1,28 @@
+import React from 'react';
 import logo from './imagenes/logo.png'; 
 import './App.css';
 import Boton from './componentes/boton';
 import BotonClear from './componentes/clear';
 import Pantalla from './componentes/pantalla';
 import { useState } from 'react';
+import { evaluate } from 'mathjs';
 
 function App() {
 
   const [input, setInput] = useState('');
+
   const agregarInput = valor => {
     setInput(input + valor);
   };
 
+  const calcularResultado = () =>{
+    if (input){
+      setInput(evaluate(input));
+    } else{
+      alert('Por favor ingresa valores para hacer cálculos')
+    }
+    
+  };
 
   return (
     <div className='App'>
@@ -43,7 +54,7 @@ function App() {
             <Boton manejarClick = {agregarInput}>*</Boton>
           </div>
           <div className='fila'>
-            <Boton manejarClick = {agregarInput}>=</Boton>
+            <Boton manejarClick = {calcularResultado}>=</Boton>
             <Boton manejarClick = {agregarInput}>0</Boton>
             <Boton manejarClick = {agregarInput}>.</Boton>
             <Boton manejarClick = {agregarInput}>/</Boton>
