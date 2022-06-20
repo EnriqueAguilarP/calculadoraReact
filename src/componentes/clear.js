@@ -3,7 +3,9 @@ import  '../hojaEstilos/clear.css'
 function BotonClear(props){
 
     return(
-        <div className="boton-clear">
+        <div 
+        className="boton-clear"
+        onClick={props.manejarClear}>
             {props.children}
         </div>
     );
